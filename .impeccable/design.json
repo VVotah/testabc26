@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T03:07:10Z",
+  "title": "Design System: FoodLoop",
+  "extensions": {
+    "colorMeta": {
+      "latar": {
+        "role": "neutral",
+        "displayName": "Krem Rak",
+        "canonical": "#f8f2e6",
+        "cssVar": "--fl-latar",
+        "tonalRamp": [
+          "#0e0b04",
+          "#2a261d",
+          "#49443b",
+          "#6b655b",
+          "#8e897e",
+          "#b3ada2",
+          "#d6d0c5",
+          "#f4eee2"
+        ]
+      },
+      "permukaan": {
+        "role": "neutral",
+        "displayName": "Gading",
+        "canonical": "#fffdf9",
+        "cssVar": "--fl-permukaan",
+        "tonalRamp": [
+          "#0c0b09",
+          "#282623",
+          "#464542",
+          "#676662",
+          "#8b8985",
+          "#afaeaa",
+          "#d3d1cd",
+          "#f0eeea"
+        ]
+      },
+      "permukaan-redup": {
+        "role": "neutral",
+        "displayName": "Gading Redup",
+        "canonical": "#f3ecde",
+        "cssVar": "--fl-permukaan-redup",
+        "tonalRamp": [
+          "#0f0a03",
+          "#2b261b",
+          "#4a4439",
+          "#6b6559",
+          "#8f887c",
+          "#b4ada0",
+          "#d7d0c3",
+          "#f5eee0"
+        ]
+      },
+      "garis": {
+        "role": "neutral",
+        "displayName": "Garis Pasir",
+        "canonical": "#e6dcc8",
+        "cssVar": "--fl-garis",
+        "tonalRamp": [
+          "#110a00",
+          "#2d2516",
+          "#4c4433",
+          "#6e6553",
+          "#918876",
+          "#b6ad9a",
+          "#dad0bc",
+          "#f8edd9"
+        ]
+      },
+      "garis-kuat": {
+        "role": "neutral",
+        "displayName": "Garis Pasir Tua",
+        "canonical": "#d3c7ae",
+        "cssVar": "--fl-garis-kuat",
+        "tonalRamp": [
+          "#120a00",
+          "#2e2510",
+          "#4e442e",
+          "#70654e",
+          "#938870",
+          "#b8ad94",
+          "#dcd0b7",
+          "#faedd4"
+        ]
+      },
+      "teks": {
+        "role": "neutral",
+        "displayName": "Tinta Hijau Arang",
+        "canonical": "#1f2b22",
+        "cssVar": "--fl-teks",
+        "tonalRamp": [
+          "#040e07",
+          "#1e2a21",
+          "#3c493f",
+          "#5c6a60",
+          "#7f8d82",
+          "#a4b2a7",
+          "#c6d6ca",
+          "#e4f3e7"
+        ]
+      },
+      "teks-redup": {
+        "role": "neutral",
+        "displayName": "Tinta Redup",
+        "canonical": "#5c685e",
+        "cssVar": "--fl-teks-redup",
+        "tonalRamp": [
+          "#050e07",
+          "#1f2a21",
+          "#3d483f",
+          "#5e6a60",
+          "#808d82",
+          "#a5b2a7",
+          "#c8d5ca",
+          "#e5f3e7"
+        ]
+      },
+      "hijau": {
+        "role": "primary",
+        "displayName": "Hijau Hutan Logo",
+        "canonical": "#1e5c2e",
+        "cssVar": "--fl-hijau",
+        "tonalRamp": [
+          "#001002",
+          "#00300e",
+          "#135325",
+          "#397546",
+          "#5d9a68",
+          "#81bf8c",
+          "#a4e3ae",
+          "#c8ffd0"
+        ]
+      },
+      "hijau-tekan": {
+        "role": "primary",
+        "displayName": "Hijau Hutan Tekan",
+        "canonical": "#174a25",
+        "cssVar": "--fl-hijau-tekan",
+        "tonalRamp": [
+          "#001002",
+          "#00300f",
+          "#1f512c",
+          "#41734c",
+          "#64976e",
+          "#89bd92",
+          "#abe1b4",
+          "#c8ffd1"
+        ]
+      },
+      "hijau-lembut": {
+        "role": "primary",
+        "displayName": "Hijau Embun",
+        "canonical": "#e4f0df",
+        "cssVar": "--fl-hijau-lembut",
+        "tonalRamp": [
+          "#060e04",
+          "#21291d",
+          "#3f483b",
+          "#5f6a5b",
+          "#828d7e",
+          "#a7b2a2",
+          "#c9d5c5",
+          "#e7f3e2"
+        ]
+      },
+      "hijau-daun": {
+        "role": "primary",
+        "displayName": "Hijau Daun",
+        "canonical": "#5ba03c",
+        "cssVar": "--fl-hijau-daun",
+        "tonalRamp": [
+          "#011000",
+          "#0f2f00",
+          "#205300",
+          "#347908",
+          "#599d39",
+          "#7dc460",
+          "#a0e883",
+          "#cfffbd"
+        ]
+      },
+      "oranye": {
+        "role": "secondary",
+        "displayName": "Oranye Logo",
+        "canonical": "#f28a1e",
+        "cssVar": "--fl-oranye",
+        "tonalRamp": [
+          "#180600",
+          "#3d1d00",
+          "#683600",
+          "#975100",
+          "#c96e01",
+          "#f99028",
+          "#fec395",
+          "#feeadc"
+        ]
+      },
+      "oranye-tekan": {
+        "role": "secondary",
+        "displayName": "Oranye Logo Tekan",
+        "canonical": "#de7a10",
+        "cssVar": "--fl-oranye-tekan",
+        "tonalRamp": [
+          "#180600",
+          "#3e1c00",
+          "#693601",
+          "#995000",
+          "#cb6d02",
+          "#f79135",
+          "#ffc396",
+          "#feeadc"
+        ]
+      },
+      "oranye-lembut": {
+        "role": "secondary",
+        "displayName": "Oranye Krim",
+        "canonical": "#fdebd3",
+        "cssVar": "--fl-oranye-lembut",
+        "tonalRamp": [
+          "#140800",
+          "#312411",
+          "#51422e",
+          "#73634e",
+          "#978671",
+          "#bcab94",
+          "#e0ceb7",
+          "#feecd4"
+        ]
+      },
+      "oranye-teks": {
+        "role": "secondary",
+        "displayName": "Oranye Bata",
+        "canonical": "#8a4200",
+        "cssVar": "--fl-oranye-teks",
+        "tonalRamp": [
+          "#190500",
+          "#401a00",
+          "#6d3200",
+          "#995017",
+          "#c0733f",
+          "#e89864",
+          "#ffc29d",
+          "#ffeade"
+        ]
+      },
+      "teks-di-oranye": {
+        "role": "secondary",
+        "displayName": "Cokelat di Oranye",
+        "canonical": "#3a1d00",
+        "cssVar": "--fl-teks-di-oranye",
+        "tonalRamp": [
+          "#170600",
+          "#3b1e01",
+          "#5d3d21",
+          "#805e41",
+          "#a58163",
+          "#cba687",
+          "#efc9a9",
+          "#ffeada"
+        ]
+      },
+      "kuning": {
+        "role": "tertiary",
+        "displayName": "Kuning Stiker",
+        "canonical": "#ffd84a",
+        "cssVar": "--fl-kuning",
+        "tonalRamp": [
+          "#100a00",
+          "#302500",
+          "#544300",
+          "#7b6400",
+          "#a48601",
+          "#cfaa05",
+          "#f4ce3d",
+          "#ffeeb7"
+        ]
+      },
+      "kuning-teks": {
+        "role": "tertiary",
+        "displayName": "Cokelat di Kuning",
+        "canonical": "#4a3600",
+        "cssVar": "--fl-kuning-teks",
+        "tonalRamp": [
+          "#120900",
+          "#332400",
+          "#56420f",
+          "#786334",
+          "#9d8656",
+          "#c2ab7a",
+          "#e6ce9c",
+          "#ffedc7"
+        ]
+      },
+      "merah": {
+        "role": "tertiary",
+        "displayName": "Merah Bata",
+        "canonical": "#c2351f",
+        "cssVar": "--fl-merah",
+        "tonalRamp": [
+          "#210000",
+          "#4e0500",
+          "#821000",
+          "#b72912",
+          "#e1533c",
+          "#ff8670",
+          "#febfb3",
+          "#fee9e5"
+        ]
+      },
+      "merah-tekan": {
+        "role": "tertiary",
+        "displayName": "Merah Bata Tekan",
+        "canonical": "#a32a17",
+        "cssVar": "--fl-merah-tekan",
+        "tonalRamp": [
+          "#210000",
+          "#4e0400",
+          "#830f00",
+          "#af3623",
+          "#d95d47",
+          "#fe8670",
+          "#fec0b3",
+          "#fee9e4"
+        ]
+      },
+      "merah-lembut": {
+        "role": "tertiary",
+        "displayName": "Merah Lembut",
+        "canonical": "#fbe3dd",
+        "cssVar": "--fl-merah-lembut",
+        "tonalRamp": [
+          "#150704",
+          "#33221d",
+          "#53403b",
+          "#75615c",
+          "#99847e",
+          "#bfa8a2",
+          "#e2cbc5",
+          "#fee9e4"
+        ]
+      },
+      "merah-teks": {
+        "role": "tertiary",
+        "displayName": "Merah Teks",
+        "canonical": "#9b2414",
+        "cssVar": "--fl-merah-teks",
+        "tonalRamp": [
+          "#200000",
+          "#4f0300",
+          "#830d00",
+          "#ae3726",
+          "#d75e4a",
+          "#ff8671",
+          "#ffbfb3",
+          "#fee9e5"
+        ]
+      },
+      "netral-lembut": {
+        "role": "neutral",
+        "displayName": "Abu Hangat",
+        "canonical": "#eee7d8",
+        "cssVar": "--fl-netral-lembut",
+        "tonalRamp": [
+          "#0f0a03",
+          "#2b261a",
+          "#4a4438",
+          "#6c6558",
+          "#8f887b",
+          "#b4ad9f",
+          "#d7d0c2",
+          "#f5eedf"
+        ]
+      },
+      "netral-teks": {
+        "role": "neutral",
+        "displayName": "Abu Hangat Teks",
+        "canonical": "#505a51",
+        "cssVar": "--fl-netral-teks",
+        "tonalRamp": [
+          "#060d07",
+          "#202921",
+          "#3e483f",
+          "#5f6960",
+          "#828d83",
+          "#a6b1a7",
+          "#c9d5ca",
+          "#e6f2e7"
+        ]
+      },
+      "putih": {
+        "role": "neutral",
+        "displayName": "Putih",
+        "canonical": "#ffffff",
+        "cssVar": "#fff (literal, teks di atas hijau dan merah)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Judul besar halaman masuk; hijau tekan dengan kata penutup oranye."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Judul halaman h1/h2, judul kartu masuk, judul modal."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Angka besar kartu statistik dan label contoh."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Judul panel, kartu, dan bagian form."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Teks isi, menu, tombol, label form."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Mono kapital kecil: nama kolom, label statistik, keterangan, cap status."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Jam, tanggal, kode, dan angka sel tabel, angka tabular."
+      }
+    },
+    "shadows": [
+      {
+        "name": "bayangan",
+        "cssVar": "--fl-bayangan",
+        "value": "0 1px 2px rgba(70, 52, 20, .05), 0 8px 20px -14px rgba(70, 52, 20, .22)",
+        "purpose": "Diam: panel, kartu, kartu statistik, bungkus tabel."
+      },
+      {
+        "name": "bayangan-angkat",
+        "cssVar": "--fl-bayangan-angkat",
+        "value": "0 2px 6px rgba(70, 52, 20, .08), 0 22px 44px -20px rgba(70, 52, 20, .35)",
+        "purpose": "Angkat: modal, dropdown, sidebar laci terbuka, label contoh."
+      },
+      {
+        "name": "fokus",
+        "cssVar": "--fl-fokus",
+        "value": "0 0 0 3px rgba(30, 92, 46, .28)",
+        "purpose": "Cincin fokus kolom isian dan tombol; versi merah rgba(194, 53, 31, .22) untuk kolom salah."
+      },
+      {
+        "name": "stiker",
+        "value": "0 6px 14px -8px rgba(70, 52, 20, .6)",
+        "purpose": "Hanya stiker kuning miring di label contoh."
+      }
+    ],
+    "motion": [
+      {
+        "name": "keadaan",
+        "value": ".15s ease",
+        "purpose": "Perubahan warna dan tepi pada hover dan fokus."
+      },
+      {
+        "name": "tekan",
+        "value": "transform .1s ease, translateY(1px)",
+        "purpose": "Tombol turun 1px saat ditekan."
+      },
+      {
+        "name": "laci",
+        "value": ".26s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Sidebar laci geser di layar kecil."
+      },
+      {
+        "name": "cetak",
+        "value": ".9s cubic-bezier(.16, 1, .3, 1) .15s",
+        "purpose": "Label contoh keluar dari atas seperti kertas pencetak, sekali saat halaman masuk dibuka."
+      },
+      {
+        "name": "tempel",
+        "value": ".3s cubic-bezier(.16, 1, .3, 1) 1s",
+        "purpose": "Stiker ditempel setelah label tercetak. Semua gerak dimatikan bila prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hp",
+        "value": "575.98px",
+        "purpose": "Statistik dua kolom, aksi form melebar penuh."
+      },
+      {
+        "name": "tablet",
+        "value": "991.98px",
+        "purpose": "Sidebar menjadi laci, sasaran sentuh 44px, halaman masuk satu kolom."
+      },
+      {
+        "name": "laptop",
+        "value": "1199.98px",
+        "purpose": "Label contoh turun di bawah judul halaman masuk."
+      }
+    ],
+    "layout": {
+      "sidebarWidth": "240px (--fl-lebar-sidebar)",
+      "topbarHeight": "64px (--fl-tinggi-topbar)",
+      "contentMaxWidth": "1280px",
+      "contentPadding": "1.75rem"
+    }
+  },
+  "components": [
+    {
+      "name": "Tombol utama",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Aksi utama hijau gelap (Simpan, Tambah, Setujui, Masuk). Satu per layar.",
+      "html": "<button class=\"ds-btn-utama\">Simpan</button>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-btn-utama{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.9375rem;line-height:1.4;padding:.5rem 1.05rem;border-radius:var(--fl-sudut);border:1px solid transparent;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;background:var(--fl-hijau);border-color:var(--fl-hijau);color:#fff;} .ds-btn-utama:hover{background:var(--fl-hijau-tekan);border-color:var(--fl-hijau-tekan);} .ds-btn-utama:focus-visible{outline:0;box-shadow:var(--fl-fokus);} .ds-btn-utama:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Tombol aksen",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Oranye logo untuk satu ajakan terpenting di halaman, mis. Ajukan permintaan.",
+      "html": "<button class=\"ds-btn-aksen\">Ajukan permintaan</button>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-btn-aksen{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.9375rem;line-height:1.4;padding:.5rem 1.05rem;border-radius:var(--fl-sudut);border:1px solid transparent;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;background:var(--fl-oranye);border-color:var(--fl-oranye);color:var(--fl-teks-di-oranye);} .ds-btn-aksen:hover{background:var(--fl-oranye-tekan);border-color:var(--fl-oranye-tekan);} .ds-btn-aksen:focus-visible{outline:0;box-shadow:var(--fl-fokus);} .ds-btn-aksen:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Tombol sekunder",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Batal, Ubah, Lihat semua. Gading bertepi pasir tua, hover hijau embun.",
+      "html": "<button class=\"ds-btn-sekunder\">Batal</button>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-btn-sekunder{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.9375rem;line-height:1.4;padding:.5rem 1.05rem;border-radius:var(--fl-sudut);border:1px solid transparent;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;background:var(--fl-permukaan);border-color:var(--fl-garis-kuat);color:var(--fl-teks);} .ds-btn-sekunder:hover{background:var(--fl-hijau-lembut);border-color:#b9cfb3;color:var(--fl-hijau-tekan);} .ds-btn-sekunder:focus-visible{outline:0;box-shadow:var(--fl-fokus);} .ds-btn-sekunder:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Tombol bahaya",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Tangguhkan, Tolak. Merah bata penuh; Hapus memakai versi bergaris.",
+      "html": "<button class=\"ds-btn-bahaya\">Tangguhkan</button> <button class=\"ds-btn-hapus\">Hapus</button>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-btn-bahaya{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.9375rem;line-height:1.4;padding:.5rem 1.05rem;border-radius:var(--fl-sudut);border:1px solid transparent;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;background:var(--fl-merah);border-color:var(--fl-merah);color:#fff;} .ds-btn-bahaya:hover{background:var(--fl-merah-tekan);border-color:var(--fl-merah-tekan);} .ds-btn-bahaya:focus-visible{outline:0;box-shadow:var(--fl-fokus);} .ds-btn-bahaya:active{transform:translateY(1px);}.ds-btn-hapus{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.9375rem;line-height:1.4;padding:.5rem 1.05rem;border-radius:var(--fl-sudut);border:1px solid transparent;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;background:var(--fl-permukaan);border-color:#e9b9b0;color:var(--fl-merah-teks);} .ds-btn-hapus:hover{background:var(--fl-merah-lembut);} .ds-btn-hapus:focus-visible{outline:0;box-shadow:var(--fl-fokus);} .ds-btn-hapus:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Kolom isian",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Label tebal di atas kolom gading bertepi pasir tua; fokus hijau dengan cincin lembut.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Email</label><input id=\"ds-email\" class=\"ds-input\" type=\"email\" placeholder=\"nama@contoh.id\">",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-label{display:block;font-family:var(--fl-huruf-isi);font-weight:700;font-size:.875rem;margin-bottom:.35rem;color:var(--fl-teks);}.ds-input{width:100%;max-width:320px;font-family:var(--fl-huruf-isi);font-size:.9375rem;font-weight:500;padding:.575rem .8rem;border:1px solid var(--fl-garis-kuat);border-radius:var(--fl-sudut);background:var(--fl-permukaan);color:var(--fl-teks);transition:border-color .15s ease,box-shadow .15s ease;}.ds-input::placeholder{color:#6c766c;font-weight:400;} .ds-input:hover:not(:focus){border-color:#b8ab8f;}.ds-input:focus{outline:0;border-color:var(--fl-hijau);box-shadow:var(--fl-fokus);}"
+    },
+    {
+      "name": "Menu sidebar",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Item menu 40px bersudut 8px; hover hijau embun, aktif hijau gelap; menu yang belum tersedia di bawah keterangan mono Segera hadir.",
+      "html": "<nav class=\"ds-sidebar\"><a class=\"ds-menu aktif\" href=\"#\" aria-current=\"page\">Dashboard</a><a class=\"ds-menu\" href=\"#\">Listing Makanan</a><a class=\"ds-menu\" href=\"#\">Titik Pengambilan</a><div class=\"ds-segera\">Segera hadir</div><span class=\"ds-menu ds-menu-mati\">Laporan Dampak</span></nav>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-sidebar{width:240px;background:var(--fl-permukaan);border-right:1px solid var(--fl-garis);padding:.5rem .75rem;display:grid;gap:2px;font-family:var(--fl-huruf-isi);}.ds-menu{display:flex;align-items:center;min-height:40px;padding:.4rem .75rem;color:var(--fl-teks);font-weight:600;font-size:.9375rem;text-decoration:none;border-radius:var(--fl-sudut-kecil);transition:background-color .15s ease,color .15s ease;}.ds-menu:hover{background:var(--fl-hijau-lembut);color:var(--fl-hijau-tekan);} .ds-menu.aktif{background:var(--fl-hijau);color:#fff;}.ds-menu:focus-visible{outline:2px solid var(--fl-hijau);outline-offset:2px;}.ds-segera{margin-top:.875rem;padding:.875rem .75rem .3rem;border-top:1px solid var(--fl-garis);font-family:var(--fl-huruf-data);font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--fl-teks-redup);}.ds-menu-mati{color:var(--fl-teks-redup);font-weight:500;min-height:34px;}"
+    },
+    {
+      "name": "Cap status",
+      "kind": "chip",
+      "refersTo": "status-tunggu",
+      "description": "Cap mono kapital kecil; warna dari pemetaan baku <x-status> (positif, tunggu, proses, negatif, netral).",
+      "html": "<span class=\"ds-cap positif\">Terverifikasi</span><span class=\"ds-cap tunggu\">Menunggu verifikasi</span><span class=\"ds-cap proses\">Dalam pengantaran</span><span class=\"ds-cap negatif\">Ditolak</span><span class=\"ds-cap netral\">Kedaluwarsa</span>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-cap{display:inline-block;padding:.22rem .5rem;border-radius:6px;font-family:var(--fl-huruf-data);font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;line-height:1.4;white-space:nowrap;margin-right:.35rem;background:var(--fl-netral-lembut);color:var(--fl-netral-teks);}.ds-cap.positif{background:var(--fl-hijau-lembut);color:var(--fl-hijau);} .ds-cap.tunggu{background:var(--fl-kuning);color:var(--fl-kuning-teks);}.ds-cap.proses{background:var(--fl-oranye-lembut);color:var(--fl-oranye-teks);} .ds-cap.negatif{background:var(--fl-merah-lembut);color:var(--fl-merah-teks);}"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Kotak gading bersudut 16px, garis pasir, bayangan diam; kepala berisi judul dan aksi dipisah garis bawah.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-panel-kepala\"><h3>Permintaan terbaru</h3><button class=\"ds-mini\">Lihat semua</button></div><p>Isi panel memakai teks isi Sofia Sans 0.9375rem.</p></section>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-panel{max-width:420px;background:var(--fl-permukaan);border:1px solid var(--fl-garis);border-radius:var(--fl-sudut-besar);box-shadow:var(--fl-bayangan);padding:1.25rem;font-family:var(--fl-huruf-isi);font-size:.9375rem;color:var(--fl-teks);}.ds-panel-kepala{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-bottom:.875rem;margin-bottom:1rem;border-bottom:1px solid var(--fl-garis);}.ds-panel-kepala h3{margin:0;font-size:1.0625rem;font-weight:700;line-height:1.3;} .ds-panel p{margin:0;}.ds-mini{font-family:var(--fl-huruf-isi);font-weight:700;font-size:.8125rem;padding:.3rem .7rem;border-radius:var(--fl-sudut-kecil);border:1px solid var(--fl-garis-kuat);background:var(--fl-permukaan);color:var(--fl-teks);cursor:pointer;}.ds-mini:hover{background:var(--fl-hijau-lembut);color:var(--fl-hijau-tekan);}"
+    },
+    {
+      "name": "Kartu statistik",
+      "kind": "custom",
+      "refersTo": "stat-card",
+      "description": "Potongan label rak: label mono, ubin ikon selang-seling hijau dan oranye, angka besar huruf sempit, catatan di bawah garis sobek.",
+      "html": "<div class=\"ds-stat-baris\"><div class=\"ds-stat\"><div class=\"ds-stat-label\">Listing aktif</div><div class=\"ds-stat-ikon\"><svg class=\"ds-ikon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 8l9-5 9 5v8l-9 5-9-5V8z\"/><path d=\"M3 8l9 5 9-5M12 13v8\"/></svg></div><div class=\"ds-stat-angka\">24</div><div class=\"ds-stat-catatan\">bulan ini</div></div><div class=\"ds-stat\"><div class=\"ds-stat-label\">Pickup hari ini</div><div class=\"ds-stat-ikon\"><svg class=\"ds-ikon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg></div><div class=\"ds-stat-angka belum\">Segera hadir</div></div></div>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-ikon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;}.ds-stat-baris{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:480px;}.ds-stat{display:grid;grid-template-columns:1fr auto;grid-template-areas:'label ikon' 'angka ikon' 'catatan catatan';column-gap:.75rem;align-items:start;padding:1.125rem 1.25rem 1.2rem;background:var(--fl-permukaan);border:1px solid var(--fl-garis);border-radius:var(--fl-sudut-besar);box-shadow:var(--fl-bayangan);}.ds-stat-label{grid-area:label;font-family:var(--fl-huruf-data);font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;line-height:1.45;color:var(--fl-teks-redup);padding-top:.15rem;}.ds-stat-angka{grid-area:angka;font-family:var(--fl-huruf-judul);font-size:3.25rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:var(--fl-teks);margin-top:.35rem;}.ds-stat-angka.belum{font-family:var(--fl-huruf-data);font-size:.8125rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--fl-teks-redup);margin-top:1.45rem;}.ds-stat-catatan{grid-area:catatan;font-family:var(--fl-huruf-isi);color:var(--fl-teks-redup);font-size:.8125rem;margin-top:.8rem;padding-top:.6rem;border-top:1px dashed var(--fl-garis-kuat);}.ds-stat-ikon{grid-area:ikon;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--fl-hijau-lembut);color:var(--fl-hijau);}.ds-stat:nth-child(even) .ds-stat-ikon{background:var(--fl-oranye-lembut);color:var(--fl-oranye-teks);}"
+    },
+    {
+      "name": "Label contoh",
+      "kind": "custom",
+      "refersTo": "label-ribbon",
+      "description": "Signature halaman masuk: listing sebagai label rak dengan pita hijau, jam besar, garis sobek, garis pindai, kode, dan stiker kuning miring.",
+      "html": "<figure class=\"ds-label-contoh\"><div class=\"ds-kertas\"><div class=\"ds-pita\"><span>FoodLoop</span><span>Listing</span></div><div class=\"ds-isi\"><div class=\"ds-nama\">Roti &amp; pastry</div><div class=\"ds-mitra\">Toko roti, titik Warung Utama</div><div class=\"ds-waktu\"><span class=\"ds-c\">Layak sampai</span><strong>19.00</strong></div></div><div class=\"ds-rinci\"><div><span class=\"ds-c\">Sisa porsi</span><b>24</b></div><div><span class=\"ds-c\">Ambil di</span><b>Coblong</b></div></div><div class=\"ds-kode\"><span class=\"ds-pindai\"></span><span class=\"ds-data\">FL-7K2Q</span></div></div><span class=\"ds-stiker\">Gratis</span></figure>",
+      "css": ":host{--fl-latar:#f8f2e6;--fl-permukaan:#fffdf9;--fl-permukaan-redup:#f3ecde;--fl-garis:#e6dcc8;--fl-garis-kuat:#d3c7ae;--fl-teks:#1f2b22;--fl-teks-redup:#5c685e;--fl-hijau:#1e5c2e;--fl-hijau-tekan:#174a25;--fl-hijau-lembut:#e4f0df;--fl-oranye:#f28a1e;--fl-oranye-tekan:#de7a10;--fl-oranye-lembut:#fdebd3;--fl-oranye-teks:#8a4200;--fl-teks-di-oranye:#3a1d00;--fl-kuning:#ffd84a;--fl-kuning-teks:#4a3600;--fl-merah:#c2351f;--fl-merah-tekan:#a32a17;--fl-merah-lembut:#fbe3dd;--fl-merah-teks:#9b2414;--fl-netral-lembut:#eee7d8;--fl-netral-teks:#505a51;--fl-huruf-isi:'Sofia Sans',system-ui,'Segoe UI',sans-serif;--fl-huruf-judul:'Sofia Sans Extra Condensed','Sofia Sans','Arial Narrow',sans-serif;--fl-huruf-data:'Azeret Mono',ui-monospace,Consolas,monospace;--fl-sudut-kecil:8px;--fl-sudut:10px;--fl-sudut-besar:16px;--fl-bayangan:0 1px 2px rgba(70,52,20,.05),0 8px 20px -14px rgba(70,52,20,.22);--fl-bayangan-angkat:0 2px 6px rgba(70,52,20,.08),0 22px 44px -20px rgba(70,52,20,.35);--fl-fokus:0 0 0 3px rgba(30,92,46,.28);}.ds-label-contoh{position:relative;width:300px;margin:0 1rem 0 0;font-family:var(--fl-huruf-isi);color:var(--fl-teks);}.ds-kertas{background:var(--fl-permukaan);border:1px solid var(--fl-garis);border-radius:var(--fl-sudut-besar);box-shadow:var(--fl-bayangan-angkat);overflow:hidden;}.ds-pita{display:flex;justify-content:space-between;padding:.55rem 1rem;background:var(--fl-hijau);color:#fff;font-family:var(--fl-huruf-data);font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;}.ds-isi{padding:1rem 1rem 1.05rem;} .ds-nama{font-family:var(--fl-huruf-judul);font-size:2rem;font-weight:800;line-height:1;} .ds-mitra{font-size:.875rem;color:var(--fl-teks-redup);margin-top:.25rem;}.ds-c{font-family:var(--fl-huruf-data);font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--fl-teks-redup);}.ds-waktu{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--fl-garis);} .ds-waktu strong{display:block;font-family:var(--fl-huruf-judul);font-size:5rem;font-weight:800;line-height:.85;color:var(--fl-hijau-tekan);margin:.35rem 0 .2rem;}.ds-rinci{display:grid;grid-template-columns:1fr 1fr;border-top:1px dashed var(--fl-garis-kuat);} .ds-rinci>div{padding:.7rem 1rem .75rem;} .ds-rinci>div+div{border-left:1px dashed var(--fl-garis-kuat);}.ds-rinci b{display:block;font-family:var(--fl-huruf-judul);font-size:1.75rem;font-weight:800;line-height:1.05;}.ds-kode{display:flex;align-items:flex-end;gap:.875rem;padding:.8rem 1rem .9rem;border-top:1px dashed var(--fl-garis-kuat);}.ds-pindai{flex:1;height:32px;opacity:.85;background:repeating-linear-gradient(90deg,var(--fl-teks) 0 2px,transparent 2px 5px,var(--fl-teks) 5px 6px,transparent 6px 8px,var(--fl-teks) 8px 11px,transparent 11px 13px);}.ds-data{font-family:var(--fl-huruf-data);font-size:.875rem;font-weight:600;}.ds-stiker{position:absolute;top:2.4rem;right:-.9rem;padding:.3rem .75rem .28rem;background:var(--fl-kuning);color:var(--fl-kuning-teks);border-radius:6px;box-shadow:0 6px 14px -8px rgba(70,52,20,.6);font-family:var(--fl-huruf-judul);font-size:1.5rem;font-weight:800;line-height:1;transform:rotate(7deg);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Label Kedaluwarsa, versi hangat",
+    "overview": "FoodLoop memperlakukan setiap makanan seperti barang di rak yang diberi label: tenggat, sisa porsi, dan kode dicetak tegas dengan huruf sempit tebal dan huruf mono kapital, seperti label harga dan label kedaluwarsa. Di sekeliling label itu antarmukanya ramah: latar krem hangat, kartu gading bergaris tipis lembut, sudut agak membulat (10 sampai 16px), dan bayangan cokelat yang nyaris tak terlihat. Data dicetak, ruangnya menyambut.\n\nKepadatannya sedang: dashboard kerja untuk Mitra dan Admin di laptop, dan layar aksi cepat untuk Penerima dan Relawan di HP. Hijau gelap dari logo memegang semua yang menunjukkan \"di sini\" dan \"lakukan ini\"; oranye logo dijatah sangat hemat. Hiasan hanya boleh berasal dari dunia label: pita, garis sobek putus-putus, garis pindai, stiker miring.\n\nVersi pertama (latar abu-abu, garis hitam tebal, sudut siku) ditolak pemilik produk karena terlalu keras dan dingin. Versi hangat ini yang disetujui (11 Nov 2026).",
+    "keyCharacteristics": [
+      "Latar krem hangat, kartu gading, garis tipis 1px warna pasir.",
+      "Hijau gelap logo sebagai satu-satunya warna utama; oranye hanya untuk aksen yang dijatah.",
+      "Judul huruf sempit tebal (Sofia Sans Extra Condensed 800); isi Sofia Sans; data dan label kecil Azeret Mono kapital.",
+      "Status selalu berupa cap kecil berwarna makna, dari satu pemetaan baku.",
+      "Sudut agak membulat, bayangan cokelat sangat halus, gerak singkat."
+    ],
+    "rules": [
+      {
+        "name": "The Satu Hijau Rule",
+        "body": "Hijau gelap adalah satu-satunya warna utama. Semua penanda \"kamu di sini\" dan \"lakukan ini\" memakai hijau gelap; tombol `btn-primary`, `btn-dark`, dan `btn-success` Bootstrap sengaja dipetakan ke hijau yang sama.",
+        "section": "colors"
+      },
+      {
+        "name": "The Oranye Dijatah Rule",
+        "body": "Oranye logo hanya muncul di tiga tempat: satu ajakan terpenting per halaman (`btn-aksen`), kata penutup judul halaman masuk, dan ubin ikon statistik selang-seling. Di luar itu oranye hanya hadir sebagai cap \"proses\" berwarna krim.",
+        "section": "colors"
+      },
+      {
+        "name": "The Kuning Berarti Menunggu Rule",
+        "body": "Kuning penuh hanya untuk cap status yang menunggu tindakan dan stiker label. Kuning bukan warna hiasan, bukan latar kartu, bukan tombol.",
+        "section": "colors"
+      },
+      {
+        "name": "The Status Baku Rule",
+        "body": "Warna status tidak dipilih per halaman. Komponen `<x-status :nilai=\"...\">` (`resources/views/components/status.blade.php`) memetakan setiap status baku ke satu jenis cap:\n- **positif** (hijau embun): Aktif, Terverifikasi, Disetujui, Selesai, Diserahkan, Terbit, Berlangsung, Ditindaklanjuti, Berhasil.\n- **tunggu** (kuning stiker): Menunggu, Menunggu verifikasi, Menunggu Persetujuan, Dijadwalkan, Baru, Ditinjau, Akan Datang, Draf.\n- **proses** (oranye krim): Dalam pengantaran.\n- **negatif** (merah lembut): Ditolak, Ditangguhkan, Gagal.\n- **netral** (abu hangat): Ditutup, Habis, Kedaluwarsa, Dibatalkan, Diarsipkan, dan status lain yang tidak dikenal.\nStatus baru ditambahkan ke pemetaan itu, bukan diberi warna di view.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Hanya Untuk Data Rule",
+        "body": "Huruf mono kapital hanya untuk label kecil, tanggal, jam, angka, kode, dan cap status. Kalimat, judul, tombol, dan menu tidak pernah mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Judul Sempit Rule",
+        "body": "Huruf sempit tebal hanya untuk `h1`/`h2`, judul modal, dan angka besar. Judul panel dan bagian form tetap Sofia Sans 700 supaya halaman punya satu suara judul besar saja.",
+        "section": "typography"
+      },
+      {
+        "name": "The Bayangan Cokelat Rule",
+        "body": "Semua bayangan berwarna cokelat hangat (70, 52, 20) dan lembut. Hanya dua tingkat: diam untuk permukaan, angkat untuk lapisan yang melayang.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pakai token `--fl-*` dan kelas yang sudah ada (Bootstrap bertema atau `fl-*`); butuh gaya baru, tambahkan di `public/css/foodloop.css`.",
+      "Do pakai hijau gelap (`--fl-hijau`) untuk menu aktif, tombol utama, kepala tabel, dan pita label.",
+      "Do tampilkan status hanya lewat `<x-status>`, dan tambah status baru ke pemetaannya.",
+      "Do cetak tanggal, jam, angka, dan kode dengan Azeret Mono angka tabular.",
+      "Do tampilkan angka yang belum ada sebagai \"Segera hadir\" atau kosong, bukan angka contoh.",
+      "Do jaga sasaran sentuh minimal 44px di HP dan kontras teks minimal 4,5:1."
+    ],
+    "donts": [
+      "Don't kembali ke versi yang ditolak pemilik produk: latar abu-abu, garis hitam tebal, sudut siku, kesan keras dan dingin.",
+      "Don't pakai oranye di luar tombol aksen, kata penutup judul halaman masuk, ubin ikon selang-seling, dan cap proses.",
+      "Don't pakai kuning untuk apa pun selain cap status menunggu dan stiker label.",
+      "Don't pakai huruf mono kapital untuk kalimat, judul, tombol, atau menu.",
+      "Don't pasang label mono kecil sebagai hiasan di atas judul halaman atau judul panel; label mono hanya menamai sebuah nilai.",
+      "Don't tulis warna, bayangan, ukuran huruf, atau `style=\"...\"` berwarna di view, dan jangan menambah font, CDN, atau file CSS lain.",
+      "Don't pakai bayangan abu-abu, hitam, atau keras bergeser; hanya dua bayangan cokelat yang tercatat.",
+      "Don't pakai ikon emoji atau ikon dari paket lain; ikon hanya dari `<x-ikon>`."
+    ]
+  }
+}

@@ -1,0 +1,2173 @@
+/*
+ * FoodLoop: satu-satunya tempat gaya tampilan (milik Nug).
+ * Dunia visual: "Label Kedaluwarsa", versi hangat. Tanggal, angka, dan kode
+ * dicetak seperti label rak; selebihnya ramah: latar krem, hijau gelap dari
+ * logo sebagai warna utama, garis tipis lembut, sudut agak membulat.
+ *
+ * Aturan pakai untuk semua modul:
+ * - JANGAN menulis warna, bayangan, sudut, atau ukuran huruf langsung di view.
+ *   Pakai kelas Bootstrap biasa (btn, card, table, badge, alert, form-control)
+ *   atau komponen fl-* di bawah. Semuanya sudah mengikuti gaya FoodLoop.
+ * - Hijau gelap = warna utama (menu aktif, tombol, kepala tabel).
+ *   Oranye = satu ajakan terpenting. Kuning = hanya cap status yang menunggu
+ *   tindakan (Menunggu, Dijadwalkan, Draf, dst., lihat <x-status>) dan stiker label.
+ * - Huruf mono kapital hanya untuk keterangan kecil, angka, tanggal, dan kode.
+ * - Butuh gaya baru? Kabari Nug supaya ditambahkan di sini.
+ * - Daftar komponen dan contoh pakainya: CLAUDE.md dan halaman /komponen (lokal).
+ *
+ * Isi: 1 Token, 2 Dasar, 3 Kerangka, 4 Tombol, 5 Panel, 6 Statistik,
+ *      7 Tabel & daftar, 8 Cap status, 9 Form, 10 Pesan, 11 Kosong,
+ *      12 Modal & dropdown, 13 Halaman tamu, 14 Layar kecil, 15 Gerak
+ */
+
+/* ============ 1. Token ============ */
+:root {
+    /* Netral hangat */
+    --fl-latar: #f8f2e6;          /* krem hangat */
+    --fl-permukaan: #fffdf9;      /* kartu dan panel */
+    --fl-permukaan-redup: #f3ecde;
+    --fl-garis: #e6dcc8;          /* garis tipis lembut */
+    --fl-garis-kuat: #d3c7ae;     /* tepi kolom isian dan tombol sekunder */
+    --fl-teks: #1f2b22;
+    --fl-teks-redup: #5c685e;     /* lolos 4.5:1 di latar dan permukaan */
+
+    /* Warna merek, senada logo */
+    --fl-hijau: #1e5c2e;          /* warna utama: menu aktif, tombol, kepala */
+    --fl-hijau-tekan: #174a25;
+    --fl-hijau-lembut: #e4f0df;
+    --fl-hijau-daun: #5ba03c;     /* hijau muda logo, untuk hiasan kecil */
+    --fl-oranye: #f28a1e;         /* aksen logo: satu ajakan terpenting */
+    --fl-oranye-tekan: #de7a10;
+    --fl-oranye-lembut: #fdebd3;
+    --fl-oranye-teks: #8a4200;
+    --fl-teks-di-oranye: #3a1d00;
+
+    /* Warna makna */
+    --fl-kuning: #ffd84a;         /* hanya cap status "menunggu" */
+    --fl-kuning-teks: #4a3600;
+    --fl-merah: #c2351f;
+    --fl-merah-tekan: #a32a17;
+    --fl-merah-lembut: #fbe3dd;
+    --fl-merah-teks: #9b2414;
+    --fl-netral-lembut: #eee7d8;
+    --fl-netral-teks: #505a51;
+
+    --fl-huruf-isi: "Sofia Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --fl-huruf-judul: "Sofia Sans Extra Condensed", "Sofia Sans", "Arial Narrow", sans-serif;
+    --fl-huruf-data: "Azeret Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+    --fl-sudut-kecil: 8px;
+    --fl-sudut: 10px;
+    --fl-sudut-besar: 16px;
+    --fl-bayangan: 0 1px 2px rgba(70, 52, 20, .05), 0 8px 20px -14px rgba(70, 52, 20, .22);
+    --fl-bayangan-angkat: 0 2px 6px rgba(70, 52, 20, .08), 0 22px 44px -20px rgba(70, 52, 20, .35);
+    --fl-fokus: 0 0 0 3px rgba(30, 92, 46, .28);
+
+    --fl-lebar-sidebar: 240px;
+    --fl-tinggi-topbar: 64px;
+
+    /* Bootstrap ikut gaya */
+    --bs-body-font-family: var(--fl-huruf-isi);
+    --bs-body-font-size: .9375rem;
+    --bs-body-line-height: 1.55;
+    --bs-body-color: var(--fl-teks);
+    --bs-body-bg: var(--fl-latar);
+    --bs-secondary-color: var(--fl-teks-redup);
+    --bs-border-color: var(--fl-garis);
+    --bs-border-radius: var(--fl-sudut);
+    --bs-border-radius-sm: var(--fl-sudut-kecil);
+    --bs-border-radius-lg: var(--fl-sudut-besar);
+    --bs-link-color: var(--fl-hijau);
+    --bs-link-color-rgb: 30, 92, 46;
+    --bs-link-hover-color: var(--fl-hijau-tekan);
+    --bs-link-hover-color-rgb: 23, 74, 37;
+    --bs-emphasis-color: var(--fl-teks);
+    --bs-heading-color: var(--fl-teks);
+    --bs-font-monospace: var(--fl-huruf-data);
+    --bs-code-color: var(--fl-hijau);
+}
+
+/* ============ 2. Dasar ============ */
+body {
+    background: var(--fl-latar);
+    color: var(--fl-teks);
+    font-family: var(--fl-huruf-isi);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    caret-color: var(--fl-hijau);
+    accent-color: var(--fl-hijau);
+}
+
+::selection {
+    background: #ffd9ae;
+    color: var(--fl-teks);
+}
+
+* {
+    scrollbar-color: var(--fl-garis-kuat) transparent;
+    scrollbar-width: thin;
+}
+
+/* Judul halaman: tebal dan sempit, gaya cetakan label */
+h1, .h1, h2, .h2 {
+    font-family: var(--fl-huruf-judul);
+    font-weight: 800;
+    letter-spacing: .005em;
+    line-height: 1;
+    text-wrap: balance;
+}
+
+h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: var(--fl-huruf-isi);
+    font-weight: 700;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+}
+
+a {
+    text-underline-offset: .2em;
+}
+
+code {
+    font-size: .8125rem;
+    overflow-wrap: anywhere;
+    background: var(--fl-permukaan-redup);
+    padding: .1em .35em;
+    border-radius: 5px;
+}
+
+.text-muted,
+.text-secondary,
+.text-body-secondary {
+    color: var(--fl-teks-redup) !important;
+}
+
+/* Keterangan kecil bergaya cetakan label: nama kolom, satuan, cap waktu */
+.fl-cap {
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--fl-teks-redup);
+}
+
+/* Angka, tanggal, jam, dan kode */
+.fl-data {
+    font-family: var(--fl-huruf-data);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.01em;
+}
+
+:focus-visible {
+    outline: 2px solid var(--fl-hijau);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+.fl-lewati {
+    position: fixed;
+    top: .6rem;
+    left: .6rem;
+    z-index: 2000;
+    padding: .55rem .9rem;
+    background: var(--fl-hijau);
+    color: #fff;
+    font-weight: 700;
+    border-radius: var(--fl-sudut);
+    transform: translateY(-250%);
+}
+
+.fl-lewati:focus {
+    transform: none;
+    color: #fff;
+}
+
+/* Ikon garis: <x-ikon nama="..." /> */
+.fl-ikon {
+    width: 1.25em;
+    height: 1.25em;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============ 3. Kerangka: sidebar, topbar, konten ============ */
+.fl-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--fl-lebar-sidebar);
+    background: var(--fl-permukaan);
+    border-right: 1px solid var(--fl-garis);
+    overflow-y: auto;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+}
+
+.fl-merek {
+    display: flex;
+    align-items: center;
+    height: var(--fl-tinggi-topbar);
+    padding: 0 1.125rem;
+    flex: none;
+}
+
+.fl-merek img {
+    display: block;
+    width: 148px;
+    height: auto;
+}
+
+.fl-menu {
+    list-style: none;
+    padding: .5rem .75rem;
+    margin: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.fl-menu a,
+.fl-menu span {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    min-height: 40px;
+    padding: .4rem .75rem;
+    color: var(--fl-teks);
+    font-weight: 600;
+    font-size: .9375rem;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: var(--fl-sudut-kecil);
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.fl-menu a:hover {
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau-tekan);
+}
+
+.fl-menu a.aktif {
+    background: var(--fl-hijau);
+    color: #fff;
+}
+
+/* Menu yang modulnya belum tersedia */
+.fl-menu span {
+    color: var(--fl-teks-redup);
+    font-weight: 500;
+    cursor: default;
+}
+
+.fl-menu-segera {
+    margin: .5rem 0 1rem;
+    padding-top: .875rem;
+    border-top: 1px solid var(--fl-garis);
+}
+
+.fl-menu-segera > .fl-cap {
+    padding: 0 1.5rem;
+}
+
+.fl-menu-segera .fl-menu {
+    padding-top: .3rem;
+}
+
+.fl-menu-segera .fl-menu span {
+    min-height: 34px;
+}
+
+.fl-segera {
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--fl-teks-redup);
+    white-space: nowrap;
+}
+
+.fl-tirai {
+    display: none;
+}
+
+.fl-utama {
+    margin-left: var(--fl-lebar-sidebar);
+    min-height: 100vh;
+}
+
+.fl-topbar {
+    height: var(--fl-tinggi-topbar);
+    background: rgba(248, 242, 230, .9);
+    backdrop-filter: saturate(1.3) blur(8px);
+    border-bottom: 1px solid var(--fl-garis);
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+/* Cap tanggal dan jam di topbar */
+.fl-waktu {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--fl-huruf-data);
+    font-size: .75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--fl-teks-redup);
+}
+
+.fl-waktu b {
+    font-weight: 600;
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau);
+    padding: .2rem .5rem;
+    border-radius: 6px;
+}
+
+.fl-konten {
+    padding: 1.75rem 1.75rem 3rem;
+    max-width: 1280px;
+}
+
+.fl-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--fl-hijau);
+    color: #fff;
+    display: inline-grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: .8125rem;
+    flex: none;
+}
+
+.fl-tombol-akun {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    height: 40px;
+    padding: 0 .8rem 0 .3rem;
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis);
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--fl-teks);
+    transition: border-color .15s ease;
+}
+
+.fl-tombol-akun:hover,
+.fl-tombol-akun[aria-expanded="true"] {
+    border-color: var(--fl-garis-kuat);
+}
+
+/* Kepala halaman: judul di kiri, tombol aksi di kanan */
+.fl-kepala {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.fl-kepala h1 {
+    font-size: clamp(2.25rem, 1.7rem + 1.8vw, 3rem);
+    margin: 0;
+}
+
+.fl-kepala p {
+    margin: .5rem 0 0;
+    color: var(--fl-teks-redup);
+    max-width: 62ch;
+}
+
+.fl-kepala-aksi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.fl-kembali {
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+/* ============ 4. Tombol ============ */
+.btn {
+    --bs-btn-font-family: var(--fl-huruf-isi);
+    --bs-btn-font-weight: 700;
+    --bs-btn-font-size: .9375rem;
+    --bs-btn-padding-x: 1.05rem;
+    --bs-btn-padding-y: .5rem;
+    --bs-btn-border-radius: var(--fl-sudut);
+    --bs-btn-focus-box-shadow: var(--fl-fokus);
+    line-height: 1.4;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-sm {
+    --bs-btn-font-size: .8125rem;
+    --bs-btn-padding-x: .7rem;
+    --bs-btn-padding-y: .3rem;
+    --bs-btn-border-radius: var(--fl-sudut-kecil);
+}
+
+.btn-lg {
+    --bs-btn-font-size: 1rem;
+    --bs-btn-padding-y: .72rem;
+    --bs-btn-border-radius: var(--fl-sudut);
+}
+
+/* Utama: hijau gelap, satu per layar. btn-primary dan btn-dark ikut. */
+.btn-utama,
+.btn-primary,
+.btn-dark,
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--fl-hijau);
+    --bs-btn-border-color: var(--fl-hijau);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--fl-hijau-tekan);
+    --bs-btn-hover-border-color: var(--fl-hijau-tekan);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--fl-hijau-tekan);
+    --bs-btn-active-border-color: var(--fl-hijau-tekan);
+    --bs-btn-disabled-color: var(--fl-netral-teks);
+    --bs-btn-disabled-bg: var(--fl-netral-lembut);
+    --bs-btn-disabled-border-color: var(--fl-garis);
+}
+
+/* Aksen: oranye logo, untuk ajakan terpenting di sebuah halaman */
+.btn-aksen,
+.btn-warning {
+    --bs-btn-color: var(--fl-teks-di-oranye);
+    --bs-btn-bg: var(--fl-oranye);
+    --bs-btn-border-color: var(--fl-oranye);
+    --bs-btn-hover-color: var(--fl-teks-di-oranye);
+    --bs-btn-hover-bg: var(--fl-oranye-tekan);
+    --bs-btn-hover-border-color: var(--fl-oranye-tekan);
+    --bs-btn-active-color: var(--fl-teks-di-oranye);
+    --bs-btn-active-bg: var(--fl-oranye-tekan);
+    --bs-btn-active-border-color: var(--fl-oranye-tekan);
+}
+
+/* Sekunder: Batal, Ubah, Lihat semua */
+.btn-sekunder,
+.btn-secondary,
+.btn-light,
+.btn-outline-secondary,
+.btn-outline-dark,
+.btn-outline-primary,
+.btn-outline-success {
+    --bs-btn-color: var(--fl-teks);
+    --bs-btn-bg: var(--fl-permukaan);
+    --bs-btn-border-color: var(--fl-garis-kuat);
+    --bs-btn-hover-color: var(--fl-hijau-tekan);
+    --bs-btn-hover-bg: var(--fl-hijau-lembut);
+    --bs-btn-hover-border-color: #b9cfb3;
+    --bs-btn-active-color: var(--fl-hijau-tekan);
+    --bs-btn-active-bg: #d5e7ce;
+    --bs-btn-active-border-color: #b9cfb3;
+    --bs-btn-disabled-color: var(--fl-teks-redup);
+    --bs-btn-disabled-bg: var(--fl-permukaan-redup);
+    --bs-btn-disabled-border-color: var(--fl-garis);
+}
+
+/* Bahaya: Tangguhkan, Tolak */
+.btn-bahaya,
+.btn-danger {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--fl-merah);
+    --bs-btn-border-color: var(--fl-merah);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--fl-merah-tekan);
+    --bs-btn-hover-border-color: var(--fl-merah-tekan);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--fl-merah-tekan);
+    --bs-btn-active-border-color: var(--fl-merah-tekan);
+}
+
+/* Hapus */
+.btn-outline-danger {
+    --bs-btn-color: var(--fl-merah-teks);
+    --bs-btn-bg: var(--fl-permukaan);
+    --bs-btn-border-color: #e9b9b0;
+    --bs-btn-hover-color: var(--fl-merah-teks);
+    --bs-btn-hover-bg: var(--fl-merah-lembut);
+    --bs-btn-hover-border-color: #e9b9b0;
+    --bs-btn-active-color: var(--fl-merah-teks);
+    --bs-btn-active-bg: var(--fl-merah-lembut);
+    --bs-btn-active-border-color: #e9b9b0;
+}
+
+.btn.disabled,
+.btn:disabled {
+    opacity: 1;
+}
+
+/* Tombol sedang memproses (ditambahkan lewat JS saat form dikirim) */
+.btn.memproses {
+    pointer-events: none;
+    opacity: .75;
+}
+
+/* ============ 5. Panel ============ */
+.fl-panel,
+.card {
+    --bs-card-bg: var(--fl-permukaan);
+    --bs-card-border-color: var(--fl-garis);
+    --bs-card-border-radius: var(--fl-sudut-besar);
+    --bs-card-inner-border-radius: calc(var(--fl-sudut-besar) - 1px);
+    --bs-card-cap-bg: transparent;
+    --bs-card-spacer-x: 1.25rem;
+    --bs-card-spacer-y: 1.125rem;
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis);
+    border-radius: var(--fl-sudut-besar);
+    box-shadow: var(--fl-bayangan);
+}
+
+.fl-panel {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-family: var(--fl-huruf-isi);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+}
+
+/* Kepala panel: judul di kiri, tombol aksi di kanan */
+.fl-panel-kepala {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    min-height: 2.25rem;
+    padding-bottom: .875rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--fl-garis);
+}
+
+.fl-panel-kepala h2,
+.fl-panel-kepala h3 {
+    font-family: var(--fl-huruf-isi);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -.005em;
+    line-height: 1.3;
+    text-transform: none;
+    margin: 0;
+}
+
+/* Panel langkah berikutnya, mis. status verifikasi Mitra */
+.fl-langkah {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1.25rem;
+}
+
+.fl-langkah-isi {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.fl-langkah-teks {
+    flex: 1 1 280px;
+    margin: 0;
+    color: var(--fl-teks);
+}
+
+/* Ikon di dalam tombol */
+.btn .fl-ikon {
+    width: 1.1em;
+    height: 1.1em;
+    margin: -.15em .35em 0 -.15em;
+    vertical-align: middle;
+}
+
+/* ============ 6. Statistik ============ */
+/* <div class="fl-statistik-baris"> berisi beberapa <x-statistik> */
+.fl-statistik-baris {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.fl-statistik {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "label ikon" "angka ikon" "catatan catatan";
+    column-gap: .75rem;
+    align-items: start;
+    padding: 1.125rem 1.25rem 1.2rem;
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis);
+    border-radius: var(--fl-sudut-besar);
+    box-shadow: var(--fl-bayangan);
+}
+
+.fl-statistik .fl-label {
+    grid-area: label;
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    color: var(--fl-teks-redup);
+    padding-top: .15rem;
+}
+
+.fl-statistik .fl-angka {
+    grid-area: angka;
+    font-family: var(--fl-huruf-judul);
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--fl-teks);
+    margin-top: .35rem;
+}
+
+/* Modul pemilik datanya belum dibuat */
+.fl-statistik .fl-angka.belum {
+    font-family: var(--fl-huruf-data);
+    font-size: .8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    line-height: 1.4;
+    color: var(--fl-teks-redup);
+    margin-top: 1.45rem;
+}
+
+/* Catatan di bawah garis sobek, seperti potongan label */
+.fl-statistik .fl-catatan {
+    grid-area: catatan;
+    color: var(--fl-teks-redup);
+    font-size: .8125rem;
+    margin-top: .8rem;
+    padding-top: .6rem;
+    border-top: 1px dashed var(--fl-garis-kuat);
+}
+
+.fl-statistik-ikon {
+    grid-area: ikon;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau);
+}
+
+.fl-statistik-ikon .fl-ikon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Selang-seling hijau dan oranye, senada logo */
+.fl-statistik:nth-child(even) .fl-statistik-ikon {
+    background: var(--fl-oranye-lembut);
+    color: var(--fl-oranye-teks);
+}
+
+/* ============ 7. Tabel & daftar ============ */
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--fl-teks);
+    --bs-table-border-color: var(--fl-garis);
+    --bs-table-striped-bg: rgba(243, 236, 222, .6);
+    --bs-table-hover-bg: var(--fl-permukaan-redup);
+    margin-bottom: 0;
+}
+
+.table > :not(caption) > * > * {
+    padding: .75rem 1rem;
+    vertical-align: middle;
+}
+
+/* Kepala tabel hijau gelap */
+.table > thead > tr > th {
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #fff;
+    background: var(--fl-hijau);
+    border-bottom: 0;
+    white-space: nowrap;
+}
+
+.table > tbody > tr:last-child > * {
+    border-bottom: 0;
+}
+
+.table td.text-end,
+.table td.fl-data {
+    font-family: var(--fl-huruf-data);
+    font-variant-numeric: tabular-nums;
+    font-size: .875rem;
+}
+
+/* Bungkus tabel: bersudut dan bisa digeser di layar kecil */
+.fl-tabel {
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis);
+    border-radius: var(--fl-sudut-besar);
+    box-shadow: var(--fl-bayangan);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+/* Daftar baris: gambar kecil, judul + keterangan, aksi di kanan */
+.fl-daftar {
+    list-style: none;
+    margin: -.25rem 0;
+    padding: 0;
+}
+
+.fl-daftar > li {
+    display: flex;
+    align-items: center;
+    gap: .875rem;
+    padding: .8rem 0;
+    border-bottom: 1px solid var(--fl-garis);
+}
+
+.fl-daftar > li:last-child {
+    border-bottom: 0;
+}
+
+.fl-daftar-gambar {
+    width: 46px;
+    height: 46px;
+    flex: none;
+    border-radius: var(--fl-sudut);
+    background: var(--fl-permukaan-redup);
+    object-fit: cover;
+}
+
+.fl-daftar-isi {
+    min-width: 0;
+    flex: 1;
+}
+
+.fl-daftar-judul {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.fl-daftar-ket {
+    color: var(--fl-teks-redup);
+    font-size: .8125rem;
+}
+
+.fl-daftar-aksi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: .4rem;
+    flex: none;
+}
+
+.pagination {
+    --bs-pagination-color: var(--fl-teks);
+    --bs-pagination-bg: var(--fl-permukaan);
+    --bs-pagination-border-color: var(--fl-garis);
+    --bs-pagination-hover-color: var(--fl-hijau-tekan);
+    --bs-pagination-hover-bg: var(--fl-hijau-lembut);
+    --bs-pagination-hover-border-color: var(--fl-garis);
+    --bs-pagination-focus-box-shadow: var(--fl-fokus);
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: var(--fl-hijau);
+    --bs-pagination-active-border-color: var(--fl-hijau);
+    --bs-pagination-disabled-color: var(--fl-teks-redup);
+    --bs-pagination-disabled-bg: var(--fl-permukaan-redup);
+    --bs-pagination-disabled-border-color: var(--fl-garis);
+}
+
+/* ============ 8. Cap status ============ */
+/* Cap kecil seperti stiker rak. Warna mengikuti arti, lihat <x-status>. */
+.fl-status,
+.badge {
+    display: inline-block;
+    padding: .22rem .5rem;
+    border: 0;
+    border-radius: 6px;
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 1.4;
+    white-space: nowrap;
+    background: var(--fl-netral-lembut);
+    color: var(--fl-netral-teks);
+}
+
+/* beres */
+.fl-status.positif,
+.badge.text-bg-success,
+.badge.bg-success {
+    background: var(--fl-hijau-lembut) !important;
+    color: var(--fl-hijau) !important;
+}
+
+/* menunggu tindakan: stiker kuning */
+.fl-status.tunggu,
+.badge.text-bg-warning,
+.badge.bg-warning {
+    background: var(--fl-kuning) !important;
+    color: var(--fl-kuning-teks) !important;
+}
+
+/* sedang berjalan */
+.fl-status.proses,
+.badge.text-bg-info,
+.badge.bg-info {
+    background: var(--fl-oranye-lembut) !important;
+    color: var(--fl-oranye-teks) !important;
+}
+
+/* ditolak, ditangguhkan */
+.fl-status.negatif,
+.badge.text-bg-danger,
+.badge.bg-danger {
+    background: var(--fl-merah-lembut) !important;
+    color: var(--fl-merah-teks) !important;
+}
+
+/* sudah lewat */
+.fl-status.netral,
+.badge.text-bg-secondary,
+.badge.text-bg-light,
+.badge.bg-secondary,
+.badge.bg-light {
+    background: var(--fl-netral-lembut) !important;
+    color: var(--fl-netral-teks) !important;
+}
+
+.badge.text-bg-primary,
+.badge.text-bg-dark,
+.badge.bg-primary,
+.badge.bg-dark {
+    background: var(--fl-hijau) !important;
+    color: #fff !important;
+}
+
+/* ============ 9. Form ============ */
+.form-label {
+    font-weight: 700;
+    font-size: .875rem;
+    margin-bottom: .35rem;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--fl-garis-kuat);
+    border-radius: var(--fl-sudut);
+    padding: .575rem .8rem;
+    color: var(--fl-teks);
+    background-color: var(--fl-permukaan);
+    font-weight: 500;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+/* Isian angka memakai huruf data, tapi contoh di placeholder tetap huruf biasa */
+.form-control.fl-data::placeholder {
+    font-family: var(--fl-huruf-isi);
+    letter-spacing: normal;
+}
+
+.form-control::placeholder {
+    color: #6c766c;
+    opacity: 1;
+    font-weight: 400;
+}
+
+.form-control:hover:not(:disabled):not(:focus),
+.form-select:hover:not(:disabled):not(:focus) {
+    border-color: #b8ab8f;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--fl-hijau);
+    background-color: var(--fl-permukaan);
+    color: var(--fl-teks);
+    outline: 0;
+    box-shadow: var(--fl-fokus);
+}
+
+.form-control:disabled,
+.form-select:disabled,
+.form-control[readonly] {
+    background-color: var(--fl-permukaan-redup);
+    border-color: var(--fl-garis);
+    color: var(--fl-teks-redup);
+}
+
+.form-text {
+    color: var(--fl-teks-redup);
+    font-size: .8125rem;
+}
+
+.form-check-input {
+    width: 1.125em;
+    height: 1.125em;
+    margin-top: .2em;
+    border: 1px solid var(--fl-garis-kuat);
+    background-color: var(--fl-permukaan);
+}
+
+.form-check-input:checked {
+    background-color: var(--fl-hijau);
+    border-color: var(--fl-hijau);
+}
+
+.form-check-input:focus {
+    border-color: var(--fl-hijau);
+    box-shadow: var(--fl-fokus);
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid,
+.fl-gabung.is-invalid {
+    border-color: var(--fl-merah);
+    background-image: none;
+    padding-right: .8rem;
+}
+
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus {
+    border-color: var(--fl-merah);
+    box-shadow: 0 0 0 3px rgba(194, 53, 31, .22);
+}
+
+.form-check-input.is-invalid {
+    border-color: var(--fl-merah);
+}
+
+.form-check-input.is-invalid ~ .form-check-label {
+    color: var(--fl-teks);
+}
+
+.invalid-feedback {
+    color: var(--fl-merah-teks);
+    font-weight: 600;
+    font-size: .8125rem;
+    margin-top: .35rem;
+}
+
+/* Kolom dengan tombol menempel (mis. kata sandi + Lihat): satu bingkai, satu garis pemisah */
+.fl-gabung {
+    display: flex;
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis-kuat);
+    border-radius: var(--fl-sudut);
+    overflow: hidden;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.fl-gabung.is-invalid {
+    padding-right: 0;
+}
+
+.fl-gabung .form-control {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+}
+
+.fl-gabung > button {
+    flex: none;
+    min-width: 4.5rem;
+    padding: 0 .9rem;
+    border: 0;
+    border-left: 1px solid var(--fl-garis);
+    border-radius: 0;
+    background: transparent;
+    color: var(--fl-hijau);
+    font-size: .8125rem;
+    font-weight: 700;
+    transition: background-color .15s ease;
+}
+
+.fl-gabung > button:hover {
+    background: var(--fl-hijau-lembut);
+}
+
+.fl-gabung:focus-within {
+    border-color: var(--fl-hijau);
+    box-shadow: var(--fl-fokus);
+}
+
+.fl-gabung.is-invalid:focus-within {
+    border-color: var(--fl-merah);
+    box-shadow: 0 0 0 3px rgba(194, 53, 31, .22);
+}
+
+.fl-gabung > button:focus-visible {
+    outline-offset: -3px;
+}
+
+.fl-gabung.is-invalid + .invalid-feedback {
+    display: block;
+}
+
+.input-group > .btn {
+    border-color: var(--fl-garis-kuat);
+}
+
+/* Judul bagian form, mis. "Data usaha", "Akun" */
+.fl-form-bagian {
+    font-family: var(--fl-huruf-isi);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -.005em;
+    line-height: 1.3;
+    text-transform: none;
+    padding-bottom: .6rem;
+    margin: 2rem 0 1.125rem;
+    border-bottom: 1px solid var(--fl-garis);
+}
+
+.fl-form-bagian:first-child,
+.fl-form-bagian:first-of-type {
+    margin-top: 0;
+}
+
+/* Deretan tombol di akhir form: Batal lalu Simpan, rata kanan */
+.fl-form-aksi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: .5rem;
+    margin-top: 1.75rem;
+}
+
+/* Pilihan berupa kartu (radio), mis. peran Penerima atau Relawan.
+   <div class="fl-pilihan"> berisi beberapa <label class="fl-pilihan-kartu"> dengan
+   <input type="radio"> di dalamnya, lalu ikon, judul, dan keterangan. */
+.fl-pilihan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: .75rem;
+}
+
+.fl-pilihan-kartu {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .8rem;
+    align-items: start;
+    padding: .95rem 1rem;
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis-kuat);
+    border-radius: var(--fl-sudut);
+    cursor: pointer;
+    transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+
+.fl-pilihan-kartu:hover {
+    border-color: #b8ab8f;
+}
+
+.fl-pilihan-kartu input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fl-pilihan-ikon {
+    grid-row: span 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--fl-permukaan-redup);
+    color: var(--fl-teks-redup);
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.fl-pilihan-ikon .fl-ikon {
+    width: 20px;
+    height: 20px;
+}
+
+.fl-pilihan-judul {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.fl-pilihan-ket {
+    font-size: .8125rem;
+    color: var(--fl-teks-redup);
+    line-height: 1.4;
+}
+
+.fl-pilihan-kartu:has(input:checked) {
+    border-color: var(--fl-hijau);
+    background: var(--fl-hijau-lembut);
+    box-shadow: inset 0 0 0 1px var(--fl-hijau);
+}
+
+.fl-pilihan-kartu:has(input:checked) .fl-pilihan-ikon {
+    background: var(--fl-hijau);
+    color: #fff;
+}
+
+.fl-pilihan-kartu:has(input:focus-visible) {
+    box-shadow: var(--fl-fokus), inset 0 0 0 1px var(--fl-hijau);
+}
+
+/* Pilihan bertumpuk satu kolom, mis. di kolom samping */
+.fl-pilihan-tumpuk {
+    grid-template-columns: 1fr;
+}
+
+/* Pilihan yang berakibat negatif (mis. Tolak): merah saat terpilih */
+.fl-pilihan-bahaya:has(input:checked) {
+    border-color: var(--fl-merah);
+    background: var(--fl-merah-lembut);
+    box-shadow: inset 0 0 0 1px var(--fl-merah);
+}
+
+.fl-pilihan-bahaya:has(input:checked) .fl-pilihan-ikon {
+    background: var(--fl-merah);
+    color: #fff;
+}
+
+.fl-pilihan.is-invalid .fl-pilihan-kartu {
+    border-color: var(--fl-merah);
+}
+
+.fl-pilihan.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Kotak unggah berkas: <label class="fl-unggah"> berisi <input type="file">.
+   Bisa diklik atau diseret; nama berkas tampil lewat data-berkas (lihat JS di view). */
+.fl-unggah {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: .2rem;
+    padding: 1.6rem 1.25rem;
+    text-align: center;
+    background: rgba(243, 236, 222, .45);
+    border: 1px dashed var(--fl-garis-kuat);
+    border-radius: var(--fl-sudut);
+    cursor: pointer;
+    transition: border-color .15s ease, background-color .15s ease;
+}
+
+.fl-unggah:hover,
+.fl-unggah.diseret {
+    border-color: var(--fl-hijau);
+    background: var(--fl-hijau-lembut);
+}
+
+.fl-unggah:has(input:focus-visible) {
+    border-color: var(--fl-hijau);
+    box-shadow: var(--fl-fokus);
+}
+
+.fl-unggah input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.fl-unggah-ikon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau);
+    margin-bottom: .45rem;
+}
+
+.fl-unggah-ikon .fl-ikon {
+    width: 22px;
+    height: 22px;
+}
+
+.fl-unggah-judul {
+    font-weight: 700;
+}
+
+.fl-unggah-judul u {
+    color: var(--fl-hijau);
+    text-underline-offset: .2em;
+}
+
+.fl-unggah-ket {
+    font-size: .8125rem;
+    color: var(--fl-teks-redup);
+}
+
+/* Setelah berkas dipilih */
+.fl-unggah[data-berkas] {
+    border-style: solid;
+    border-color: var(--fl-hijau);
+    background: var(--fl-hijau-lembut);
+}
+
+.fl-unggah[data-berkas] .fl-unggah-judul::after {
+    content: attr(data-berkas);
+    display: block;
+    font-family: var(--fl-huruf-data);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--fl-hijau);
+    margin-top: .25rem;
+    overflow-wrap: anywhere;
+}
+
+.fl-unggah.is-invalid {
+    border-color: var(--fl-merah);
+}
+
+.fl-unggah.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Tab saring berupa tautan, mis. status pengajuan.
+   <nav class="fl-saring"> berisi beberapa <a> (aktif: class "aktif" + aria-current),
+   jumlah opsional di <span class="fl-saring-jumlah">. */
+.fl-saring {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.fl-saring a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    min-height: 40px;
+    padding: .4rem .85rem;
+    border: 1px solid var(--fl-garis-kuat);
+    border-radius: 999px;
+    background: var(--fl-permukaan);
+    color: var(--fl-teks);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.fl-saring a:hover {
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau-tekan);
+}
+
+.fl-saring a.aktif {
+    background: var(--fl-hijau);
+    border-color: var(--fl-hijau);
+    color: #fff;
+}
+
+.fl-saring-jumlah {
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    padding: .05rem .45rem;
+    border-radius: 999px;
+    background: var(--fl-permukaan-redup);
+    color: var(--fl-teks-redup);
+}
+
+.fl-saring a.aktif .fl-saring-jumlah {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+}
+
+/* Kotak ikon pengganti gambar di daftar baris */
+.fl-daftar-ikon {
+    display: grid;
+    place-items: center;
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau);
+}
+
+/* Pasangan keterangan dan nilai, mis. Data pengajuan */
+.fl-rincian {
+    display: grid;
+    grid-template-columns: minmax(130px, 34%) 1fr;
+    gap: .7rem 1rem;
+    margin: 0;
+}
+
+.fl-rincian dt {
+    font-weight: 500;
+    color: var(--fl-teks-redup);
+}
+
+.fl-rincian dd {
+    margin: 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* Linimasa riwayat, mis. Riwayat pengajuan */
+.fl-linimasa {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fl-linimasa li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .15rem 1rem;
+    padding: 0 0 1rem 1.6rem;
+}
+
+.fl-linimasa li:last-child {
+    padding-bottom: 0;
+}
+
+.fl-linimasa li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .3rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--fl-garis-kuat);
+}
+
+.fl-linimasa li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1.1rem;
+    bottom: .1rem;
+    border-left: 1px dashed var(--fl-garis-kuat);
+}
+
+.fl-linimasa li.positif::before { background: var(--fl-hijau); }
+.fl-linimasa li.negatif::before { background: var(--fl-merah); }
+.fl-linimasa li.tunggu::before { background: var(--fl-kuning); box-shadow: 0 0 0 1px var(--fl-kuning-teks) inset; }
+
+.fl-linimasa-judul {
+    font-weight: 600;
+}
+
+.fl-linimasa-waktu {
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    color: var(--fl-teks-redup);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.fl-linimasa-ket {
+    grid-column: 1 / -1;
+    color: var(--fl-teks-redup);
+    font-size: .875rem;
+}
+
+/* Pratinjau dokumen (gambar atau PDF) */
+.fl-pratinjau {
+    display: block;
+    width: 100%;
+    height: 340px;
+    border: 1px solid var(--fl-garis);
+    border-radius: var(--fl-sudut);
+    background: var(--fl-permukaan-redup);
+    object-fit: contain;
+}
+
+.fl-pratinjau-berkas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .7rem;
+}
+
+/* Kartu isi selebar form, mis. form dan detail titik (mockup: kolom kiri, tidak selebar layar) */
+.fl-kartu-isi {
+    max-width: 760px;
+}
+
+/* Judul baris yang bisa diklik, mis. nama titik di daftar */
+a.fl-tautan-judul {
+    color: var(--fl-teks);
+    text-decoration: none;
+}
+
+a.fl-tautan-judul:hover {
+    color: var(--fl-hijau);
+    text-decoration: underline;
+}
+
+/* Penanda field opsional di samping label */
+.fl-opsional {
+    margin-left: .35rem;
+    font-weight: 500;
+    font-size: .8125rem;
+    color: var(--fl-teks-redup);
+}
+
+/* Label kecil di dalam satu kelompok isian, mis. Latitude dan Longitude di bawah "Koordinat" */
+.form-label.fl-label-kecil {
+    font-weight: 500;
+    color: var(--fl-teks-redup);
+}
+
+/* Kelompok koordinat: judul dan tombol lokasi sebaris, isian di bawah */
+.fl-koordinat {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--fl-garis);
+}
+
+.fl-koordinat-kepala {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem 1rem;
+    margin-bottom: .75rem;
+}
+
+.fl-koordinat legend {
+    float: none;
+    width: auto;
+    font-size: .875rem;
+}
+
+/* Tautan dengan ikon di samping nilai, mis. Lihat di OpenStreetMap */
+.fl-tautan-peta {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    margin-left: .75rem;
+    font-weight: 600;
+    font-size: .875rem;
+}
+
+.fl-tautan-peta .fl-ikon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Panel yang perlu perhatian, mis. pengajuan ditolak: garis atas merah tipis */
+.fl-panel-perhatian {
+    border-top: 3px solid var(--fl-merah);
+}
+
+/* Kutipan teks dari orang lain, mis. alasan penolakan dari Admin */
+.fl-kutipan {
+    margin: 0 0 1rem;
+    padding: .7rem .9rem;
+    background: var(--fl-merah-lembut);
+    color: var(--fl-merah-teks);
+    border-radius: var(--fl-sudut);
+    font-weight: 600;
+}
+
+/* Langkah bernomor singkat */
+.fl-langkah-urut {
+    margin: 0 0 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--fl-teks);
+}
+
+.fl-langkah-urut li + li {
+    margin-top: .3rem;
+}
+
+/* ============ 10. Pesan ============ */
+.alert {
+    --bs-alert-border-radius: var(--fl-sudut);
+    --bs-alert-padding-x: .95rem;
+    --bs-alert-padding-y: .7rem;
+    --bs-alert-margin-bottom: 1.25rem;
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+
+.alert-success { --bs-alert-bg: var(--fl-hijau-lembut); --bs-alert-color: var(--fl-hijau); --bs-alert-border-color: #cde2c5; }
+.alert-danger { --bs-alert-bg: var(--fl-merah-lembut); --bs-alert-color: var(--fl-merah-teks); --bs-alert-border-color: #f0c6bd; }
+.alert-warning { --bs-alert-bg: #fff3c9; --bs-alert-color: #5a4300; --bs-alert-border-color: #f2de97; }
+.alert-info,
+.alert-primary { --bs-alert-bg: var(--fl-oranye-lembut); --bs-alert-color: var(--fl-oranye-teks); --bs-alert-border-color: #f6d3a8; }
+.alert-secondary,
+.alert-light,
+.alert-dark { --bs-alert-bg: var(--fl-netral-lembut); --bs-alert-color: var(--fl-netral-teks); --bs-alert-border-color: var(--fl-garis); }
+
+/* ============ 11. Tampilan kosong ============ */
+.fl-kosong {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+    border: 1px dashed var(--fl-garis-kuat);
+    border-radius: var(--fl-sudut);
+    color: var(--fl-teks-redup);
+    background: rgba(243, 236, 222, .45);
+}
+
+/* Di dalam panel: tanpa bingkai kedua, cukup ikon dan teks di tengah */
+.fl-panel .fl-kosong,
+.card .fl-kosong {
+    border: 0;
+    background: transparent;
+    padding: 1.5rem 1rem 1rem;
+}
+
+.fl-kosong-ikon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: var(--fl-hijau-lembut);
+    color: var(--fl-hijau);
+    margin-bottom: .75rem;
+}
+
+.fl-kosong-ikon .fl-ikon {
+    width: 22px;
+    height: 22px;
+}
+
+.fl-kosong-judul {
+    color: var(--fl-teks);
+    font-weight: 700;
+    margin-bottom: .15rem;
+}
+
+.fl-kosong p {
+    max-width: 44ch;
+    margin: 0;
+    font-size: .875rem;
+}
+
+.fl-kosong-aksi {
+    margin-top: 1rem;
+}
+
+/* ============ 12. Modal & dropdown ============ */
+.modal-content {
+    border: 0;
+    border-radius: var(--fl-sudut-besar);
+    background: var(--fl-permukaan);
+    box-shadow: var(--fl-bayangan-angkat);
+}
+
+.modal-backdrop {
+    --bs-backdrop-bg: #1f2b22;
+    --bs-backdrop-opacity: .45;
+}
+
+.modal-title {
+    font-family: var(--fl-huruf-judul);
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.dropdown-menu {
+    --bs-dropdown-bg: var(--fl-permukaan);
+    --bs-dropdown-border-color: var(--fl-garis);
+    --bs-dropdown-border-radius: var(--fl-sudut-besar);
+    --bs-dropdown-link-color: var(--fl-teks);
+    --bs-dropdown-link-hover-color: var(--fl-hijau-tekan);
+    --bs-dropdown-link-hover-bg: var(--fl-hijau-lembut);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: var(--fl-hijau);
+    --bs-dropdown-link-disabled-color: var(--fl-teks-redup);
+    --bs-dropdown-divider-bg: var(--fl-garis);
+    --bs-dropdown-spacer: .4rem;
+    overflow: hidden;
+    box-shadow: var(--fl-bayangan-angkat);
+}
+
+.dropdown-item {
+    font-weight: 600;
+    padding: .55rem .75rem;
+}
+
+/* ============ 13. Halaman tamu (masuk, daftar) ============ */
+.fl-masuk {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, .75fr);
+}
+
+/* Kiri: pesan dan label contoh */
+.fl-masuk-rak {
+    padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 0;
+}
+
+.fl-masuk-logo {
+    width: 184px;
+    height: auto;
+    align-self: flex-start;
+}
+
+.fl-masuk-pesan {
+    margin: auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+}
+
+.fl-masuk-pesan h1 {
+    font-size: clamp(2.75rem, 4.6vw, 4.5rem);
+    line-height: .95;
+    margin: 0;
+    color: var(--fl-hijau-tekan);
+}
+
+/* Tiap baris judul diatur sendiri supaya patahannya tidak janggal */
+.fl-masuk-pesan h1 span {
+    display: block;
+    white-space: nowrap;
+}
+
+.fl-masuk-pesan h1 span:last-child {
+    color: var(--fl-oranye-tekan);
+}
+
+.fl-masuk-pesan p {
+    margin: 1.25rem 0 0;
+    max-width: 34ch;
+    font-size: 1.0625rem;
+    color: var(--fl-teks);
+}
+
+.fl-masuk-kaki {
+    font-size: .875rem;
+    color: var(--fl-teks-redup);
+}
+
+/* Label contoh: gambaran sebuah listing sebagai label rak */
+.fl-label-contoh {
+    position: relative;
+    width: clamp(264px, 24vw, 330px);
+    margin: 0 .9rem 0 0;
+    justify-self: end;
+}
+
+.fl-label-kertas {
+    background: var(--fl-permukaan);
+    border: 1px solid var(--fl-garis);
+    border-radius: var(--fl-sudut-besar);
+    box-shadow: var(--fl-bayangan-angkat);
+    overflow: hidden;
+}
+
+.fl-label-pita {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .55rem 1rem;
+    background: var(--fl-hijau);
+    color: #fff;
+    font-family: var(--fl-huruf-data);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.fl-label-isi {
+    padding: 1rem 1rem 1.05rem;
+}
+
+.fl-label-nama {
+    font-family: var(--fl-huruf-judul);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.fl-label-mitra {
+    font-size: .875rem;
+    color: var(--fl-teks-redup);
+    margin-top: .25rem;
+}
+
+.fl-label-waktu {
+    margin-top: 1rem;
+    padding-top: .8rem;
+    border-top: 1px solid var(--fl-garis);
+}
+
+.fl-label-waktu strong {
+    display: block;
+    font-family: var(--fl-huruf-judul);
+    font-size: 5.5rem;
+    font-weight: 800;
+    line-height: .85;
+    font-variant-numeric: tabular-nums;
+    color: var(--fl-hijau-tekan);
+    margin: .35rem 0 .4rem -.03em;
+}
+
+.fl-label-rinci {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px dashed var(--fl-garis-kuat);
+}
+
+.fl-label-rinci > div {
+    padding: .7rem 1rem .75rem;
+}
+
+.fl-label-rinci > div + div {
+    border-left: 1px dashed var(--fl-garis-kuat);
+}
+
+.fl-label-rinci b {
+    display: block;
+    font-family: var(--fl-huruf-judul);
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.05;
+    margin-top: .15rem;
+}
+
+.fl-label-kode {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: .875rem;
+    padding: .8rem 1rem .9rem;
+    border-top: 1px dashed var(--fl-garis-kuat);
+}
+
+/* Garis pindai: hiasan yang meniru kode batang, dibaca sebagai kode di sebelahnya */
+.fl-pindai {
+    flex: 1;
+    height: 32px;
+    opacity: .85;
+    background: repeating-linear-gradient(90deg,
+        var(--fl-teks) 0 2px, transparent 2px 5px,
+        var(--fl-teks) 5px 6px, transparent 6px 8px,
+        var(--fl-teks) 8px 11px, transparent 11px 13px,
+        var(--fl-teks) 13px 14px, transparent 14px 18px,
+        var(--fl-teks) 18px 20px, transparent 20px 21px,
+        var(--fl-teks) 21px 22px, transparent 22px 26px);
+}
+
+.fl-label-kode .fl-data {
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+/* Stiker kuning yang ditempel miring di sudut label */
+.fl-stiker {
+    position: absolute;
+    top: 2.4rem;
+    right: -.9rem;
+    padding: .3rem .75rem .28rem;
+    background: var(--fl-kuning);
+    color: var(--fl-kuning-teks);
+    border-radius: 6px;
+    box-shadow: 0 6px 14px -8px rgba(70, 52, 20, .6);
+    font-family: var(--fl-huruf-judul);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    transform: rotate(7deg);
+}
+
+.fl-label-contoh figcaption {
+    margin-top: .7rem;
+    font-size: .8125rem;
+    color: var(--fl-teks-redup);
+}
+
+/* Kanan: form masuk */
+.fl-masuk-form {
+    background: var(--fl-permukaan);
+    border-left: 1px solid var(--fl-garis);
+    display: grid;
+    place-items: center;
+    padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+    min-width: 0;
+}
+
+.fl-masuk-kotak {
+    width: 100%;
+    max-width: 380px;
+}
+
+.fl-masuk-kotak h2 {
+    font-size: 3rem;
+    margin: 0 0 .4rem;
+}
+
+.fl-masuk-kotak > p {
+    color: var(--fl-teks-redup);
+    margin-bottom: 1.75rem;
+}
+
+.fl-masuk-lain {
+    margin-top: 1.5rem;
+    padding-top: 1.125rem;
+    border-top: 1px solid var(--fl-garis);
+    font-size: .9375rem;
+    display: grid;
+    gap: .3rem;
+}
+
+.fl-masuk-lain a {
+    font-weight: 700;
+}
+
+/* Halaman daftar: kepala tipis dan satu kartu form di tengah */
+.fl-tamu-kepala {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--fl-tinggi-topbar);
+    padding: 0 1.75rem;
+    background: var(--fl-permukaan);
+    border-bottom: 1px solid var(--fl-garis);
+}
+
+.fl-tamu-kepala img {
+    width: 148px;
+    height: auto;
+    display: block;
+}
+
+/* Isi halaman tamu: judul di atas kartu form */
+.fl-tamu-isi {
+    padding: 2.5rem 1.25rem 3.5rem;
+}
+
+.fl-tamu-judul {
+    max-width: 720px;
+    margin: 0 auto 1.5rem;
+}
+
+.fl-tamu-judul h1 {
+    font-size: clamp(2.25rem, 1.7rem + 1.8vw, 3rem);
+    color: var(--fl-hijau-tekan);
+    margin: 0;
+}
+
+.fl-tamu-judul p {
+    margin: .5rem 0 0;
+    color: var(--fl-teks-redup);
+    max-width: 62ch;
+}
+
+.fl-kartu-form {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+fieldset legend.form-label {
+    float: none;
+    width: auto;
+    margin-bottom: .5rem;
+}
+
+/* ============ 14. Layar kecil ============ */
+@media (max-width: 1199.98px) {
+    .fl-masuk-pesan {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .fl-label-contoh {
+        justify-self: start;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .fl-sidebar {
+        width: min(86vw, 300px);
+        transform: translateX(-101%);
+        transition: transform .26s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .fl-sidebar.terbuka {
+        transform: none;
+        box-shadow: var(--fl-bayangan-angkat);
+    }
+
+    .fl-menu a,
+    .fl-menu span {
+        min-height: 46px;
+        font-size: 1rem;
+    }
+
+    .fl-tirai {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1035;
+        background: rgba(31, 43, 34, .45);
+        opacity: 0;
+        pointer-events: none;
+        border: 0;
+        transition: opacity .2s ease;
+    }
+
+    .fl-sidebar.terbuka + .fl-tirai {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .fl-utama {
+        margin-left: 0;
+    }
+
+    .fl-topbar {
+        padding: 0 1rem;
+        gap: .75rem;
+    }
+
+    .fl-topbar .btn,
+    .fl-tombol-akun,
+    .btn-sm {
+        min-height: 44px;
+    }
+
+    .btn-sm {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fl-konten {
+        padding: 1.25rem 1rem 2.5rem;
+    }
+
+    /* Halaman masuk di HP: logo, judul, lalu form langsung terlihat; label contoh di bawah */
+    .fl-masuk {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+    }
+
+    .fl-masuk-rak,
+    .fl-masuk-pesan {
+        display: contents;
+    }
+
+    .fl-masuk-logo {
+        grid-row: 1;
+        margin: 1.25rem 1.25rem 0;
+        width: 160px;
+    }
+
+    .fl-masuk-teks {
+        grid-row: 2;
+        padding: 1.25rem 1.25rem 1.5rem;
+    }
+
+    .fl-masuk-pesan h1 {
+        font-size: clamp(2.5rem, 12.5vw, 4.25rem);
+    }
+
+    .fl-masuk-pesan p {
+        display: none;
+    }
+
+    .fl-masuk-form {
+        grid-row: 3;
+        margin: 0 1rem;
+        border: 1px solid var(--fl-garis);
+        border-radius: var(--fl-sudut-besar);
+        box-shadow: var(--fl-bayangan);
+        place-items: start stretch;
+        padding: 1.5rem 1.25rem 1.75rem;
+    }
+
+    .fl-masuk-kotak {
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    .fl-masuk-kotak h2 {
+        font-size: 2.5rem;
+    }
+
+    .fl-label-contoh {
+        grid-row: 4;
+        margin: 2rem 2rem 0 1.25rem;
+        width: min(100% - 3.25rem, 320px);
+    }
+
+    .fl-masuk-kaki {
+        grid-row: 5;
+        padding: 1.5rem 1.25rem 2rem;
+    }
+
+    .fl-tamu-isi {
+        padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .fl-tamu-kepala {
+        padding: 0 1rem;
+    }
+
+    .fl-kartu-form {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .fl-tombol-akun .fl-nama,
+    .fl-waktu .fl-tanggal {
+        display: none;
+    }
+
+    .fl-tombol-akun {
+        padding: 0 .35rem;
+    }
+
+    .fl-statistik-baris {
+        grid-template-columns: 1fr 1fr;
+        gap: .75rem;
+    }
+
+    .fl-statistik {
+        padding: .95rem 1rem 1rem;
+    }
+
+    .fl-statistik .fl-angka {
+        font-size: 2.75rem;
+    }
+
+    .fl-statistik .fl-label {
+        min-height: 2.6em;
+    }
+
+    .fl-statistik-ikon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .fl-statistik-ikon .fl-ikon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .fl-daftar > li {
+        flex-wrap: wrap;
+    }
+
+    .fl-daftar-aksi {
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: calc(46px + .875rem);
+    }
+
+    .fl-rincian {
+        grid-template-columns: 1fr;
+        gap: .1rem;
+    }
+
+    .fl-rincian dd {
+        margin-bottom: .6rem;
+    }
+
+    .fl-tautan-peta {
+        display: flex;
+        margin: .35rem 0 0;
+    }
+
+    .fl-pratinjau {
+        height: 260px;
+    }
+
+    .fl-form-aksi .btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fl-kepala-aksi,
+    .fl-kepala-aksi .btn {
+        width: 100%;
+    }
+}
+
+/* ============ 15. Gerak ============ */
+/* Satu momen saja: label contoh keluar dari atas seperti kertas pencetak,
+   lalu stikernya ditempel. Tanpa animasi pun isinya sudah terlihat. */
+@media (prefers-reduced-motion: no-preference) {
+    .fl-cetak .fl-label-kertas {
+        animation: fl-cetak .9s cubic-bezier(.16, 1, .3, 1) .15s both;
+    }
+
+    .fl-cetak .fl-stiker {
+        animation: fl-tempel .3s cubic-bezier(.16, 1, .3, 1) 1s both;
+    }
+
+    @keyframes fl-cetak {
+        from { clip-path: inset(0 0 100% 0 round 16px); transform: translateY(-10px); }
+        to { clip-path: inset(0 0 0 0 round 16px); transform: none; }
+    }
+
+    @keyframes fl-tempel {
+        from { opacity: 0; transform: rotate(-4deg) scale(1.3); }
+        to { opacity: 1; transform: rotate(7deg) scale(1); }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-delay: 0s !important;
+    }
+}
